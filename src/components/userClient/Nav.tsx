@@ -4,17 +4,10 @@ import "@styles/datepicker.css";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@public/assets/images/logo.png";
-import React, { useEffect } from "react";
-import { fetchCarModelsData } from "@utils/dataFetcher";
+import React from "react";
 
 const Nav: React.FC = () => {
-  useEffect(() => {
-    const fetchCarModels = async () => {
-      const response = await fetchCarModelsData();
-      console.log(response);
-    };
-    fetchCarModels();
-  }, []);
+
   return (
     <div className="absolute bg-black rounded-b-xl bg-opacity-30 top-0 flex flex-col w-full h-auto z-50">
       <nav className="navbar">
@@ -36,7 +29,7 @@ const Nav: React.FC = () => {
           <Link className="navbar-options" href="/terms">
             KİRALAMA ŞARTLARI
           </Link>
-          <Link className="navbar-options" href="#">
+          <Link className="navbar-options" href="/fleet">
             ARAÇLARIMIZ
           </Link>
           <Link className="navbar-options" href="/about">

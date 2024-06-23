@@ -2,14 +2,14 @@ import React, { use, useEffect } from "react";
 import Select from "react-select";
 
 interface Option {
-  id?: number;
+  id?: any;
   name: string;
 }
 
 interface DropdownProps {
   options: Option[];
   onSelect: (value: number) => void;
-  currentOption?: number | null;
+  currentOption?: any | null;
 }
 
 const DropdownMenu: React.FC<DropdownProps> = ({

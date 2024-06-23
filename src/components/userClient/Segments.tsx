@@ -3,6 +3,7 @@ import luxuryBg from "@public/assets/images/luxBg.jpg";
 import ecoBg from "@public/assets/images/ecoBg.jpg";
 import highBg from "@public/assets/images/highBg.jpg";
 import midBg from "@public/assets/images/midBg.jpg";
+import Link from "next/link";
 
 const Segments = () => {
   return (
@@ -23,9 +24,17 @@ const Segments = () => {
               <h1 className="text-xl text-white mb-6">
                 Lüks araçlarımıza göz atın!
               </h1>
-              <button className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400">
+              <Link
+                className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400"
+                href={{
+                  pathname: "/fleet",
+                  query: {
+                    carSegment: "Lüks",
+                  },
+                }}
+              >
                 Gözat
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -44,9 +53,17 @@ const Segments = () => {
               <h1 className="text-xl text-white mb-6">
                 Üst segment araçlarımıza göz atın!
               </h1>
-              <button className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400">
+              <Link
+                className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400"
+                href={{
+                  pathname: "/fleet",
+                  query: {
+                    carSegment: "Üst",
+                  },
+                }}
+              >
                 Gözat
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -67,9 +84,17 @@ const Segments = () => {
               <h1 className="text-xl text-white mb-6">
                 Orta segment araçlarımıza göz atın!
               </h1>
-              <button className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400">
+              <Link
+                className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400"
+                href={{
+                  pathname: "/fleet",
+                  query: {
+                    carSegment: "Orta",
+                  },
+                }}
+              >
                 Gözat
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -90,9 +115,17 @@ const Segments = () => {
               <h1 className="text-xl text-white mb-6">
                 Ekonomik araçlarımıza göz atın!
               </h1>
-              <button className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400">
+              <Link
+                className="text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400"
+                href={{
+                  pathname: "/fleet",
+                  query: {
+                    carSegment: "Ekonomik",
+                  },
+                }}
+              >
                 Gözat
-              </button>
+              </Link>
             </div>
           </div>
         </div>

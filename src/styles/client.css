@@ -44,7 +44,7 @@
 }
 
 .list-button {
-  @apply bg-orange-400 text-white shadow-lg mt-12 px-5 p-2 rounded-xl font-extrabold transition duration-300;
+  @apply flex justify-center bg-orange-400 text-white shadow-lg mt-12 px-5 p-2 rounded-xl font-extrabold transition duration-300;
 }
 
 .list-button:hover {

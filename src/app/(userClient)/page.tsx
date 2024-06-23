@@ -1,9 +1,6 @@
-"use client";
 import CarSearchForm from "@components/userClient/CarSearchForm";
-import Footer from "@components/userClient/Footer";
 import "@styles/client.css";
 import React from "react";
-import luxuryBg from "@public/assets/images/luxuryBg.jpg";
 import Segments from "@components/userClient/Segments";
 
 const page = () => {
@@ -15,7 +12,7 @@ const page = () => {
           autoPlay
           muted
           loop
-          className="object-contain h-full rounded-b-3xl -z-10"
+          className="object-contain w-full h-full rounded-b-3xl -z-10"
         ></video>
         <div className="flex absolute left-40 z-10" style={{ top: "13%" }}>
           <CarSearchForm />

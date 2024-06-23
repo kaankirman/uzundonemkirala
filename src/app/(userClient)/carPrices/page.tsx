@@ -1,36 +1,49 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import CarCard from "@components/userClient/elements/CarCard";
-import { fetchCarModelsData } from "@utils/dataFetcher";
-import DropdownMenu from "@components/userClient/elements/DropdownMenu";
+import { useSearchParams } from "next/navigation";
 import { CarModel } from "@utils/types";
 import CarFilter from "@components/userClient/elements/CarFilter";
-import { useSearchParams } from "next/navigation";
 
 const page = () => {
   const searchParams = useSearchParams();
-  const carSegment = searchParams.get("carSegment") ?? "";
+  const pickupDate = searchParams.get("pickupDate") ?? "";
+  const pickupTime = searchParams.get("pickupTime") ?? "";
+  const rentalDuration = searchParams.get("rentalDuration") ?? "";
+  const km = searchParams.get("km") ?? "";
+  const currency = searchParams.get("currency") ?? "";
   const [carModels, setCarModels] = useState<CarModel[]>([]);
   const [filteredModels, setFilteredModels] = useState<CarModel[]>([]);
   useEffect(() => {
     const fetchCarModels = async () => {
-      const response = await fetchCarModelsData();
+      const response = await fetch(`/api/turev/carPrices`, {
+        method: "POST",
+        body: JSON.stringify({
+          pickupDate: pickupDate,
+          pickupTime: pickupTime,
+          rentalDuration: rentalDuration,
+          currency: currency,
+        }),
+      });
+
       console.log(response);
-      setCarModels(response);
+      const data = await response.json();
+      console.log(data);
+      setCarModels(data);
     };
     fetchCarModels();
   }, []);
 
   return (
     <div className="w-full h-full bg-gradient-to-b px-6 pt-32 pb-4 from-orange-50 to-orange-200">
-      <CarFilter carModels={carModels} carSegment={carSegment} setFilteredModels={setFilteredModels} />
+      <CarFilter carModels={carModels} setFilteredModels={setFilteredModels} />
       <div
         className="flex flex-col px-4 py-4 h-5/6 w-full rounded-2xl shadow-lg overflow-y-scroll"
         style={{ scrollbarWidth: "none" }}
       >
         <div className="grid grid-cols-2 gap-5">
           {filteredModels.map((car) => (
-            <CarCard car={car} />
+            <CarCard rentalDuration={rentalDuration} km={km} car={car} />
           ))}
         </div>
         {filteredModels.length === 0 ? (

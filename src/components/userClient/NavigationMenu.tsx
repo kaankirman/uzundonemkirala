@@ -50,7 +50,7 @@ export default function NavigationMenu() {
           </Link>
         </div>
       </div>
-      <div className="flex flex-row mb-12 h-fit ml-16">
+      <div className="flex flex-row justify-between mb-12 h-fit ml-16">
         <div className="navigation-menu-option-container">
           <label className="navigation-menu-label">Kurumsal</label>
           <Link href="/" className="navigation-menu-link">
@@ -70,7 +70,7 @@ export default function NavigationMenu() {
           </Link>
         </div>
 
-        <div className="flex flex-col items-center shadow-xl ml-32 rounded-2xl bg-orange-400 px-7 py-4">
+        <div className="flex flex-col items-center shadow-xl mr-16 rounded-2xl bg-orange-400 px-7 py-4">
           <div className="flex flex-row mb-4">
             <FaWhatsapp size={48} className="text-green-500 mx-3" />
             <RiCustomerService2Fill size={48} className="text-white mx-3" />

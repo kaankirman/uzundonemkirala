@@ -1,12 +1,15 @@
+"use client"
 import React from "react";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import { BsCalendar2Week, BsClock } from "react-icons/bs";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import DropdownMenu from "@components/userClient/elements/DropdownMenu";
+import Link from "next/link";
 
 const CarSearchForm = () => {
+  const minDate = new DateObject().add(1, "day");
   const [selectedDate, setSelectedDate] = React.useState<DateObject | null>(
-    null
+    minDate
   );
   const [selectedPickTime, setSelectedPickTime] =
     React.useState<DateObject | null>(
@@ -17,7 +20,7 @@ const CarSearchForm = () => {
   >(1);
   const [selectedMonthlyKm, setSelectedMonthlyKm] = React.useState<
     number | null
-  >(1000);
+  >(2000);
 
   const handleDropdownSelect = (
     value: number,
@@ -35,21 +38,18 @@ const CarSearchForm = () => {
 
   const kmOptions = [
     { id: 2000, name: "2000 Km/Ay" },
-    { id: 2500, name: "2500 Km/Ay" },
     { id: 3000, name: "3000 Km/Ay" },
-    { id: 3500, name: "3500 Km/Ay" },
     { id: 4000, name: "4000 Km/Ay" },
     { id: 5000, name: "5000 Km/Ay" },
   ];
+
   return (
     <div className="flex text-xl *:text-2xl">
       <div className="flex flex-row justify-center items-center">
         <div className="flex flex-col">
           <div className="flex flex-row mb-10">
             <div className="flex flex-col w-full">
-              <label className="font-bold text-white mb-5">
-                Alış Tarihi
-              </label>
+              <label className="font-bold text-white mb-5">Alış Tarihi</label>
               <div className="flex flex-row border w-fit h-12 bg-white border-gray-300 rounded-md transition duration-300 hover:border-orange-400 items-center px-2">
                 <BsCalendar2Week size={24} className="text-orange-400 mr-2" />
                 <DatePicker
@@ -73,6 +73,7 @@ const CarSearchForm = () => {
                   value={selectedPickTime}
                   onChange={setSelectedPickTime}
                   placeholder="Alış saati seçin"
+                  minDate={new Date().setDate(15)}
                   format="HH:mm"
                   className="orange"
                   containerStyle={{ border: "none" }}
@@ -109,7 +110,21 @@ const CarSearchForm = () => {
               />
             </div>
           </div>
-          <button className="list-button">Uygun Araçları Listele</button>
+          <Link
+            className="list-button"
+            href={{
+              pathname: "/carPrices",
+              query: {
+                pickupDate: selectedDate?.format("DD-MM-YYYY"),
+                pickupTime: selectedPickTime?.format("HH:mm"),
+                rentalDuration: selectedRentDuration?.toString(),
+                km: selectedMonthlyKm?.toString(),
+                currency: "TL",
+              },
+            }}
+          >
+            Uygun Araçları Listele
+          </Link>
         </div>
       </div>
     </div>
