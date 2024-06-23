@@ -52,12 +52,6 @@ const CarFilter = ({
 
   useEffect(() => {
     let data = carModels;
-    console.log(
-      selectedSegment,
-      selectedFuelType,
-      selectedGearType,
-      selectedPersonCount
-    );
     if (selectedFuelType) {
       data = data.filter((model) => model.fuel === selectedFuelType);
     }
@@ -71,7 +65,6 @@ const CarFilter = ({
       data = data.filter((model) => model.group_str === selectedSegment);
     }
     setFilteredModels(data);
-    console.log(data);
   }, [
     selectedSegment,
     selectedFuelType,

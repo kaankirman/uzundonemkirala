@@ -1,6 +1,5 @@
 export const POST = async (req: Request) => {
   const { pickupDate, pickupTime, rentalDuration, currency } = await req.json();
-  console.log(pickupDate, pickupTime, rentalDuration, currency);
   const [pickupDay, pickupMonth, pickupYear] = pickupDate.split("-");
   const [pickupHour, pickupMin] = pickupTime.split(":");
   let dropoffMonth = parseInt(pickupMonth) + parseInt(rentalDuration);
@@ -37,7 +36,6 @@ export const POST = async (req: Request) => {
       throw new Error(`Error fetching data: ${response.statusText}`);
     }
     const data = await response.json();
-    console.log(data);
     return new Response(JSON.stringify(data), { status: 200 });
   } catch (error) {
     return new Response("Error", { status: 500 });

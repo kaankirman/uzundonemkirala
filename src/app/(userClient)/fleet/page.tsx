@@ -15,7 +15,6 @@ const page = () => {
   useEffect(() => {
     const fetchCarModels = async () => {
       const response = await fetchCarModelsData();
-      console.log(response);
       setCarModels(response);
     };
     fetchCarModels();

@@ -26,9 +26,7 @@ const page = () => {
         }),
       });
 
-      console.log(response);
       const data = await response.json();
-      console.log(data);
       setCarModels(data);
     };
     fetchCarModels();

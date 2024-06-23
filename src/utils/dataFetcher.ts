@@ -5,7 +5,6 @@ export const fetchExchangeRatesData = async () => {
     const response = await fetch("/api/exchangeRates");
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       return data;
     }
     Notify.failure("Veriler getirilirken bir hata oluştu.");
@@ -19,7 +18,6 @@ export const fetchCarModelsData = async () => {
     const response = await fetch("/api/turev/carModels");
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       return data;
     }
     Notify.failure("Veriler getirilirken bir hata oluştu.");

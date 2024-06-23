@@ -10,7 +10,6 @@ type CarCardProps = {
 const CarCard = ({ car, km, rentalDuration }: CarCardProps) => {
   const [rentalPrice, setRentalPrice] = useState<number | null>(null);
   const roundToHigherTenth = async (value: number) => {
-    console.log(value);
     return Math.round(value / 100) * 100;
   };
 
