@@ -6,10 +6,6 @@
     @apply flex flex-col relative;
 }
 
-.video-container {
-    @apply object-contain w-full h-full rounded-b-3xl -z-10;
-}
-
 .search-form-container {
     @apply flex absolute left-40 z-10;
     top: 13%;
@@ -41,9 +37,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .video-container {
-        @apply h-screen object-cover;
-    }
 
     .search-form-container {
         top: 8%;

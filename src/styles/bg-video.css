@@ -1,0 +1,9 @@
+.video-container {
+    @apply object-contain w-full h-full rounded-b-3xl -z-10;
+}
+
+@media screen and (max-width: 1024px) {
+    .video-container {
+        @apply h-screen object-cover;
+    }
+}

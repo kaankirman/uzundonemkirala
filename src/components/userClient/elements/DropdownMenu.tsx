@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 
 interface Option {
@@ -17,6 +17,12 @@ const DropdownMenu: React.FC<DropdownProps> = ({
   onSelect,
   currentOption,
 }) => {
+  const [menuPortalTarget, setMenuPortalTarget] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setMenuPortalTarget(document.body);
+  }, []);
+
   const selectOptions = options.map((option) => ({
     value: option.id,
     label: option.name,
@@ -33,8 +39,8 @@ const DropdownMenu: React.FC<DropdownProps> = ({
       value={selectOptions.find((option) => option.value === currentOption)}
       options={selectOptions}
       onChange={handleChange}
-      menuPortalTarget={document.body} // Render menu in the portal
-      menuPosition="fixed" // Use fixed positioning
+      menuPortalTarget={menuPortalTarget}
+      menuPosition="fixed"
       styles={{
         control: (styles, { isFocused }) => ({
           ...styles,
@@ -57,7 +63,7 @@ const DropdownMenu: React.FC<DropdownProps> = ({
         }),
         menuPortal: (styles) => ({
           ...styles,
-          zIndex: 9999, // Ensure the menu is on top
+          zIndex: 9999,
         }),
       }}
     />
