@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.car-card-container {
+  @apply relative w-full rounded-2xl h-52 bg-white shadow-lg mx-2 overflow-hidden outline outline-transparent transition-all duration-300 hover:outline-company-orange hover:shadow-company-orange;
+}
+
+.car-card-link {
+  @apply absolute z-10 h-full w-full cursor-pointer;
+}
+
+.car-card-image-container {
+  @apply absolute inset-0 flex justify-center items-center;
+}
+
+.car-card-image {
+  @apply object-cover h-full w-full;
+}
+
+.car-card-gradient-left {
+  @apply absolute top-0 left-0 w-2/4 h-full bg-gradient-to-r from-black to-transparent;
+}
+
+.car-card-details-left {
+  @apply absolute flex flex-col top-2 left-8;
+}
+
+.car-card-title {
+  @apply font-bold text-3xl text-company-orange mb-3;
+}
+
+.car-card-subtitle {
+  @apply text-xl font-bold mb-3 text-white;
+}
+
+.car-card-features {
+  @apply flex flex-col *:font-bold *:text-sm text-neutral-300;
+}
+
+.car-card-gradient-right {
+  @apply absolute top-0 right-0 w-2/4 h-full bg-gradient-to-l from-black to-transparent;
+}
+
+.car-card-details-right {
+  @apply absolute flex flex-col top-2 right-8 items-end;
+}
+
+.car-card-rental-conditions {
+  @apply text-xl font-bold mb-3 text-white;
+}
+
+.car-card-conditions {
+  @apply flex flex-col mb-5 *:font-bold *:text-sm text-neutral-300;
+}
+
+.car-card-price {
+  @apply text-3xl font-bold text-company-orange;
+}
+
+.car-card-price-sub {
+  @apply text-base;
+}
+
+@media screen and (max-width: 1024px) {
+  .car-card-container * {
+    @apply text-sm;
+  }
+
+  .car-card-title {
+    @apply text-2xl z-10;
+  }
+
+  .car-card-details-left {
+    @apply top-4 left-4;
+  }
+
+  .car-card-details-right {
+    top: 60px;
+    @apply right-4;
+  }
+
+  .car-card-price {
+    @apply text-xl;
+  }
+
+  .car-card-conditions {
+    @apply mb-1;
+  }
+
+}

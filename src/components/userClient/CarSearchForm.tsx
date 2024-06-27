@@ -1,20 +1,17 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import DatePicker, { DateObject } from "react-multi-date-picker";
-import { BsCalendar2Week, BsClock } from "react-icons/bs";
-import TimePicker from "react-multi-date-picker/plugins/time_picker";
+import { BsCalendar2Week } from "react-icons/bs";
 import DropdownMenu from "@components/userClient/elements/DropdownMenu";
 import Link from "next/link";
+import Notiflix, { Loading, Notify } from "notiflix";
+import "@styles/car-search-form.css"; // import the css file
 
 const CarSearchForm = () => {
   const minDate = new DateObject().add(1, "day");
   const [selectedDate, setSelectedDate] = React.useState<DateObject | null>(
     minDate
   );
-  const [selectedPickTime, setSelectedPickTime] =
-    React.useState<DateObject | null>(
-      new DateObject().setHour(18).setMinute(15)
-    );
   const [selectedRentDuration, setSelectedRentDuration] = React.useState<
     number | null
   >(1);
@@ -31,8 +28,16 @@ const CarSearchForm = () => {
 
   const durationOptions = [
     { id: 1, name: "1 Ay" },
+    { id: 2, name: "2 Ay" },
+    { id: 3, name: "3 Ay" },
     { id: 4, name: "4 Ay" },
+    { id: 5, name: "5 Ay" },
     { id: 6, name: "6 Ay" },
+    { id: 7, name: "7 Ay" },
+    { id: 8, name: "8 Ay" },
+    { id: 9, name: "9 Ay" },
+    { id: 10, name: "10 Ay" },
+    { id: 11, name: "11 Ay" },
     { id: 12, name: "12 Ay" },
   ];
 
@@ -43,15 +48,31 @@ const CarSearchForm = () => {
     { id: 5000, name: "5000 Km/Ay" },
   ];
 
+  useEffect(() => {
+    Notiflix.Loading.init({
+      svgColor: "#ff9b0e",
+      backgroundColor: "rgba(0,0,0,0)",
+    });
+    Notify.init({
+      position: "center-top",
+      timeout: 3000,
+    });
+
+    Notiflix.Confirm.init({
+      okButtonBackground: "#F44336",
+      titleColor: "#F44336",
+    });
+  }, []);
+
   return (
-    <div className="flex text-xl *:text-2xl">
-      <div className="flex flex-row justify-center items-center">
-        <div className="flex flex-col">
-          <div className="flex flex-row mb-10">
-            <div className="flex flex-col w-full">
-              <label className="font-bold text-white mb-5">Alış Tarihi</label>
-              <div className="flex flex-row border w-fit h-12 bg-white border-gray-300 rounded-md transition duration-300 hover:border-orange-400 items-center px-2">
-                <BsCalendar2Week size={24} className="text-orange-400 mr-2" />
+    <div className="car-search-container">
+      <div className="car-search-inner-container">
+        <div className="car-search-form">
+          <div className="car-search-date">
+            <div className="car-search-date-picker-container">
+              <label className="car-search-label">Alış Tarihi</label>
+              <div className="car-search-date-input">
+                <BsCalendar2Week size={24} className="car-search-icon" />
                 <DatePicker
                   value={selectedDate}
                   onChange={setSelectedDate}
@@ -63,32 +84,10 @@ const CarSearchForm = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col w-full ml-7">
-              <label className="font-bold  text-white mb-5 rounde">
-                Alış Saati
-              </label>
-              <div className="flex flex-row border w-fit h-12 bg-white border-gray-300 rounded-md transition duration-300 hover:border-orange-400 items-center px-2 none">
-                <BsClock size={24} className="text-orange-400 mr-2" />
-                <DatePicker
-                  value={selectedPickTime}
-                  onChange={setSelectedPickTime}
-                  placeholder="Alış saati seçin"
-                  minDate={new Date().setDate(15)}
-                  format="HH:mm"
-                  className="orange"
-                  containerStyle={{ border: "none" }}
-                  inputClass="cursor-pointer outline-none w-40"
-                  disableDayPicker
-                  plugins={[<TimePicker hideSeconds mStep={15} />]}
-                />
-              </div>
-            </div>
           </div>
-          <div className="flex flex-row w-full">
-            <div className="flex flex-col">
-              <label className="font-bold  text-white mb-5">
-                Kiralama Süresi
-              </label>
+          <div className="car-search-dropdowns">
+            <div className="car-search-dropdown">
+              <label className="car-search-label">Kiralama Süresi</label>
               <DropdownMenu
                 options={durationOptions}
                 currentOption={selectedRentDuration}
@@ -97,10 +96,8 @@ const CarSearchForm = () => {
                 }
               />
             </div>
-            <div className="flex flex-col pl-7">
-              <label className="font-bold  text-white mb-5">
-                Aylık Kilometre
-              </label>
+            <div className="car-search-dropdown car-search-dropdown-margin">
+              <label className="car-search-label">Aylık Kilometre</label>
               <DropdownMenu
                 options={kmOptions}
                 currentOption={selectedMonthlyKm}
@@ -116,7 +113,7 @@ const CarSearchForm = () => {
               pathname: "/carPrices",
               query: {
                 pickupDate: selectedDate?.format("DD-MM-YYYY"),
-                pickupTime: selectedPickTime?.format("HH:mm"),
+                pickupTime: "10:00",
                 rentalDuration: selectedRentDuration?.toString(),
                 km: selectedMonthlyKm?.toString(),
                 currency: "TL",

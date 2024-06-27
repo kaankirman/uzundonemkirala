@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.segment-container {
+    @apply flex flex-col bg-gradient-to-b from-white to-orange-200;
+}
+
+.segment-row {
+    @apply flex flex-row px-8 py-10;
+}
+
+.segment-card {
+    @apply flex flex-col relative border border-orange-400 h-56 w-full mx-10 rounded-xl overflow-hidden;
+}
+
+.segment-image {
+    @apply object-cover w-full h-full absolute;
+}
+
+.segment-price-container {
+    @apply flex flex-col items-end absolute right-10 bottom-10 z-20;
+}
+
+.segment-price {
+    @apply text-2xl font-bold text-orange-400;
+}
+
+.segment-price-desc {
+    @apply text-sm font-bold text-white;
+}
+
+.segment-gradient-overlay {
+    @apply absolute flex flex-col top-0 left-0 z-10 w-full h-full bg-gradient-to-b from-transparent to-black opacity-100;
+}
+
+.segment-text-container {
+    @apply absolute bottom-10 left-10;
+}
+
+.segment-title {
+    @apply text-5xl font-bold text-orange-400 mb-1;
+}
+
+.segment-desc {
+    @apply text-xl text-white mb-6;
+}
+
+.segment-link {
+    @apply text-orange-400 text-sm shadow-lg px-5 p-2 rounded-xl font-extrabold transition duration-300 border border-orange-400 hover:text-white hover:bg-orange-400;
+}
+
+@media screen and (max-width: 1024px) {
+    .segment-container {
+        @apply mt-2;
+    }
+    .segment-row {
+        @apply flex-col py-0 px-2 mb-0 mt-0;
+    }
+
+    .segment-card {
+        @apply h-52 w-full ml-0 mr-0 mb-3;
+    }
+
+    .segment-price-container {
+        @apply bottom-1 right-2;
+    }
+
+    .segment-price {
+        @apply text-3xl;
+    }
+
+    .segment-price-desc {
+        @apply text-base;
+    }
+
+    .segment-text-container {
+        @apply bottom-4 left-2;
+    }
+
+    .segment-title {
+        @apply text-3xl;
+    }
+
+    .segment-desc {
+        @apply text-lg;
+    }
+
+    .segment-link {
+        @apply text-base;
+    }
+    
+}

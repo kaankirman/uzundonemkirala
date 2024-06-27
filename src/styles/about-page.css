@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.about-page-container {
+    @apply h-full w-full bg-gradient-to-b from-orange-50 to-orange-200 pt-16;
+}
+
+.about-page-div {
+    @apply flex flex-col w-full h-full px-60 pb-4 items-center justify-center text-xl *:mb-3 overflow-hidden;
+}
+
+@media screen and (max-width: 1024px) {
+    .about-page-div {
+        scrollbar-width: thin;
+        scrollbar-color: #f97c10 #d1d5db;
+        @apply px-2 overflow-y-scroll items-start justify-start;
+    }
+    
+}

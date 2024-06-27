@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-page-container {
+    @apply flex flex-col relative;
+}
+
+.video-container {
+    @apply object-contain w-full h-full rounded-b-3xl -z-10;
+}
+
+.search-form-container {
+    @apply flex absolute left-40 z-10;
+    top: 13%;
+}
+
+.headline-container {
+    @apply flex flex-col items-end absolute right-8 text-white font-bold text-5xl justify-between h-44 pointer-events-none;
+    top: 40%;
+}
+
+.headline-text {
+    @apply transition-colors duration-300;
+}
+
+.headline-text-1 {
+    @apply text-orange-100;
+}
+
+.headline-text-2 {
+    @apply text-orange-200;
+}
+
+.headline-text-3 {
+    @apply text-orange-300;
+}
+
+.headline-text-4 {
+    @apply text-orange-400;
+}
+
+@media screen and (max-width: 1024px) {
+    .video-container {
+        @apply h-screen object-cover;
+    }
+
+    .search-form-container {
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+    }
+
+    .headline-container {
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        @apply right-0 text-2xl w-full items-center justify-center;
+    }
+}

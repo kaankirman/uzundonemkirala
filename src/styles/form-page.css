@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-page-main-div {
+    @apply h-full w-full pt-20 pb-4 px-6;
+}
+
+.form-page-sub-div {
+    @apply flex flex-col h-full w-full items-center justify-center shadow-xl rounded-lg px-10 py-6;
+}
+
+.form-page-alert {
+    @apply flex w-96 h-8 bg-red-700 mb-2 rounded-xl items-center justify-center font-bold text-white;
+}
+
+.form-page-car-div {
+    width: 950px;
+    @apply mr-4;
+}
+
+.form-page-form-div {
+    width: 900px;
+    @apply flex flex-col mt-8 items-center;
+}
+
+.form-row {
+    @apply flex flex-row mt-4;
+}
+
+.form-col {
+    @apply flex flex-col px-5;
+}
+
+.form-label {
+    @apply font-bold text-black;
+}
+
+.input {
+    @apply border rounded-xl border-neutral-300 transition-all duration-300 outline-orange-400 hover:border-orange-400;
+}
+
+.text-input {
+    @apply input;
+    width: 450px;
+    @apply px-2 py-1;
+}
+
+.save-button {
+    @apply flex justify-center bg-orange-400 text-white shadow-lg mt-12 px-5 p-2 rounded-xl font-extrabold transition duration-300 z-40;
+}
+
+.save-button:hover {
+    @apply bg-white text-orange-400;
+}
+
+@media screen and (max-width: 1024px) {
+    .form-page-main-div {
+        @apply px-0;
+    }
+    .form-page-sub-div {
+        @apply px-4 py-2 overflow-y-scroll overflow-x-hidden rounded-t-none;
+    }
+    .form-page-alert {
+        @apply  mt-32 rounded-none;
+    }
+    .form-page-car-div {
+        @apply w-full mr-0 mt-2;
+    }
+
+    .form-page-form-div {
+        @apply w-full mt-4;
+    }
+
+    .text-input {
+        @apply w-full;
+    }
+
+    .form-row {
+        @apply flex flex-col mt-2;
+    }
+
+    .save-button {
+        @apply mt-6;
+    }
+    
+}

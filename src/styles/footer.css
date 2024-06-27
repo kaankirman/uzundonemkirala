@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.footer-container {
+    @apply relative flex flex-col bg-gradient-to-b from-orange-200 to-black;
+}
+
+.footer-content {
+    @apply flex flex-col z-10;
+}
+
+.footer-navigation {
+    @apply flex flex-col px-64 py-4;
+}
+
+.footer-background {
+    @apply absolute bottom-0 left-0 z-0 rounded-3xl object-cover opacity-10 w-screen;
+}
+
+@media screen and (max-width: 1024px) {
+    .footer-navigation {
+        @apply px-4;
+    }
+
+    .footer-background {
+        @apply h-full;
+    }
+    
+    
+}

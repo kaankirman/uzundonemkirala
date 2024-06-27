@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar-container {
+    @apply absolute bg-black rounded-b-xl bg-opacity-30 top-0 flex flex-col w-full h-auto z-50;
+}
+
+.navbar {
+    @apply bg-none flex flex-row justify-between mx-16 my-4;
+}
+
+.navbar-options {
+    font-weight: bolder;
+    @apply text-white ml-6 p-1 text-xl transition-colors duration-300 ease-in-out;
+}
+
+.navbar-options:hover {
+    @apply text-orange-400;
+}
+
+.navbar-logo {
+    @apply flex flex-row items-center;
+}
+
+.navbar-options-container {
+    @apply flex flex-row justify-center items-center;
+}
+
+.menu-icon {
+    @apply hidden transition duration-300;
+}
+
+.menu-icon:hover {
+    @apply text-company-orange;
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar {
+        @apply mx-4 my-2;
+    }
+    .navbar-options-container {
+        top: 62px;
+        @apply flex-col items-end absolute right-0 bg-black bg-opacity-30 rounded-lg ;
+    }
+    .navbar-options {
+        @apply ml-0 p-1 px-2;
+    }
+    .menu-icon {
+        @apply block text-white size-11;
+    }
+
+}

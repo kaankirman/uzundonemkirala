@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fleet-page-container {
+    @apply w-full h-full bg-gradient-to-b px-6 pt-32 pb-4 from-orange-50 to-orange-200;
+}
+
+.car-filter-page-container {
+    @apply flex flex-col px-4 py-4 h-5/6 w-full rounded-2xl shadow-lg overflow-y-scroll;
+}
+
+.car-grid {
+    @apply grid grid-cols-2 gap-5;
+}
+
+.no-cars-message {
+    @apply flex justify-center items-center h-1/2;
+}
+
+.no-cars-text {
+    @apply text-2xl font-bold text-gray-500;
+}
+
+@media screen and (max-width: 1024px) {
+    .fleet-page-container {
+        @apply pt-14 px-0 ;
+    }
+    .car-filter-page-container {
+        @apply px-0 py-4 -z-10;
+    }
+    .car-grid {
+        @apply grid-cols-1 gap-3;
+    }
+    
+}

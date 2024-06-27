@@ -1,40 +1,63 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import CarCard from "@components/userClient/elements/CarCard";
-import { fetchCarModelsData } from "@utils/dataFetcher";
-import DropdownMenu from "@components/userClient/elements/DropdownMenu";
 import { CarModel } from "@utils/types";
 import CarFilter from "@components/userClient/elements/CarFilter";
 import { useSearchParams } from "next/navigation";
+import { Loading } from "notiflix";
+import { DateObject } from "react-multi-date-picker";
+import "@styles/fleet-page.css";
 
 const page = () => {
   const searchParams = useSearchParams();
   const carSegment = searchParams.get("carSegment") ?? "";
+  const minDate = new DateObject().add(1, "day");
+
   const [carModels, setCarModels] = useState<CarModel[]>([]);
   const [filteredModels, setFilteredModels] = useState<CarModel[]>([]);
   useEffect(() => {
+    Loading.standard();
     const fetchCarModels = async () => {
-      const response = await fetchCarModelsData();
-      setCarModels(response);
+      const response = await fetch(`/api/turev/carPrices`, {
+        method: "POST",
+        body: JSON.stringify({
+          pickupDate: minDate.format("DD-MM-YYYY"),
+          pickupTime: "18:00",
+          rentalDuration: "1",
+          currency: "TL",
+        }),
+      });
+
+      const data = await response.json();
+      setCarModels(data);
     };
     fetchCarModels();
   }, []);
 
+  useEffect(() => {
+    Loading.remove();
+  }, [filteredModels]);
+
   return (
-    <div className="w-full h-full bg-gradient-to-b px-6 pt-32 pb-4 from-orange-50 to-orange-200">
-      <CarFilter carModels={carModels} carSegment={carSegment} setFilteredModels={setFilteredModels} />
+    <div className="fleet-page-container">
+      <CarFilter
+        carModels={carModels}
+        carSegment={carSegment}
+        setFilteredModels={setFilteredModels}
+      />
       <div
-        className="flex flex-col px-4 py-4 h-5/6 w-full rounded-2xl shadow-lg overflow-y-scroll"
+        className="car-filter-page-container"
         style={{ scrollbarWidth: "none" }}
       >
-        <div className="grid grid-cols-2 gap-5">
+        <div className="car-grid">
           {filteredModels.map((car) => (
             <CarCard car={car} />
           ))}
         </div>
         {filteredModels.length === 0 ? (
-          <div className="flex justify-center items-center h-1/2">
-            <h1 className="text-2xl font-bold text-gray-500">
+          <div className="no-cars-message">
+            <h1 className="no-cars-text">
               Aradığınız Kriterlere Uygun Araç Bulunamadı.
             </h1>
           </div>

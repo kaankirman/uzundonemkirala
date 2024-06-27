@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.car-filter-container {
+  @apply flex flex-row justify-center h-1/6 items-center;
+}
+
+.car-filter-column {
+  @apply flex flex-col mb-2 mx-3;
+}
+
+.car-filter-label {
+  @apply font-bold text-black mb-1;
+}
+
+.clear-filter-button {
+  @apply bg-company-orange text-white font-bold text-lg px-3 py-1 self-center rounded-md ml-2 transition duration-300 hover:bg-red-700;
+}
+
+@media screen and (max-width: 1024px){
+  .car-filter-container {
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #f97c10 #d1d5db;
+    @apply h-1/6 w-full justify-start; 
+  }
+
+  .car-filter-column {
+    @apply flex flex-col mb-2 mx-1;
+  }
+
+  .clear-filter-button {
+    @apply w-full;
+  }
+  
+}

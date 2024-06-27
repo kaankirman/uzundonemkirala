@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navigation-menu-option-container {
+    @apply flex flex-col mr-40 w-40;
+}
+
+.navigation-menu-label {
+    @apply text-lg text-white font-bold mb-3;
+}
+
+.navigation-menu-link {
+    @apply text-neutral-300 transition duration-300 mb-2 hover:text-orange-400;
+}
+
+.navigation-container {
+    @apply flex flex-col w-full;
+}
+
+.navigation-top {
+    @apply flex flex-row justify-between mb-12;
+}
+
+.navigation-logo {
+    @apply object-cover;
+}
+
+.navigation-icons-container {
+    @apply flex flex-row items-center;
+}
+
+.navigation-icon {
+    @apply mx-2 text-orange-400 transition duration-300 hover:text-white;
+}
+
+.navigation-links-container {
+    @apply flex flex-row justify-between mb-12 h-fit ml-16;
+}
+
+.contact-card {
+    @apply flex flex-col items-center shadow-xl mr-16 rounded-2xl bg-orange-400 px-7 py-4;
+}
+
+.contact-icons {
+    @apply flex flex-row mb-4;
+}
+
+.contact-icon {
+    @apply mx-3;
+}
+
+.contact-icon-whatsapp {
+    @apply text-green-500;
+}
+
+.contact-icon-service {
+    @apply text-white;
+}
+
+.contact-icon-phone {
+    @apply text-blue-500;
+}
+
+.contact-label {
+    @apply font-extrabold text-base mb-3;
+}
+
+.contact-number {
+    @apply text-lg;
+}
+
+.footer {
+    @apply flex flex-row self-end;
+}
+
+.footer-text {
+    @apply self-end text-orange-400;
+}
+
+@media screen and (max-width: 1024px) {
+    .navigation-menu-option-container {
+        @apply mr-0 w-full items-center;
+    }
+
+    .navigation-menu-label {
+        @apply text-base mt-2 mb-2 text-company-grey;
+    }
+
+    .navigation-menu-link {
+        @apply text-white text-sm mb-1;
+    }
+
+    .navigation-top {
+        @apply mb-6;
+    }
+
+    .navigation-icons-container {
+        @apply mr-0;
+    }
+
+    .navigation-links-container {
+        @apply ml-0 flex-col;
+    }
+
+    .contact-card {
+        @apply mr-0 mt-3;
+    }
+
+    .contact-icons {
+        @apply mb-2;
+    }
+
+    .contact-label {
+        @apply text-sm text-center;
+    }
+
+    .contact-number {
+        @apply text-sm;
+    }
+
+    .footer {
+        @apply flex-col;
+    }
+
+    .footer-text {
+        @apply text-sm;
+    }
+
+}

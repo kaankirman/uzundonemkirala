@@ -1,6 +1,8 @@
 import { CarModel } from "@utils/types";
 import React, { useEffect, useState } from "react";
 import DropdownMenu from "./DropdownMenu";
+import Transition from "./Transition";
+import "@styles/car-filter.css"; // import the css file
 
 interface CarFilterProps {
   carSegment?: string;
@@ -81,65 +83,79 @@ const CarFilter = ({
   };
 
   const handleClearFilter = () => {
-    setSelectedSegment(null);
-    setSelectedFuelType(null);
-    setSelectedGearType(null);
-    setSelectedPersonCount(null);
+    setSelectedSegment("");
+    setSelectedFuelType("");
+    setSelectedGearType("");
+    setSelectedPersonCount("");
   };
+
   return (
-    <div className="flex flex-row justify-center h-1/6 items-center">
-      <div className="flex flex-col mb-2 mx-3">
-        <label className="font-bold  text-black mb-1">Segment</label>
-        <DropdownMenu
-          options={segmentOptions.map((option) => ({
-            id: option,
-            name: option,
-          }))}
-          currentOption={selectedSegment}
-          onSelect={(value) => handleDropdownSelect(value, setSelectedSegment)}
-        />
-      </div>
-      <div className="flex flex-col mb-2 mx-3">
-        <label className="font-bold  text-black mb-1">Yakıt Türü</label>
-        <DropdownMenu
-          options={fuelTypes.map((option) => ({
-            id: option,
-            name: option,
-          }))}
-          currentOption={selectedFuelType}
-          onSelect={(value) => handleDropdownSelect(value, setSelectedFuelType)}
-        />
-      </div>
-      <div className="flex flex-col mb-2 mx-3">
-        <label className="font-bold  text-black mb-1">Vites Türü</label>
-        <DropdownMenu
-          options={gearTypes.map((option) => ({
-            id: option,
-            name: option,
-          }))}
-          currentOption={selectedGearType}
-          onSelect={(value) => handleDropdownSelect(value, setSelectedGearType)}
-        />
-      </div>
-      <div className="flex flex-col mb-2 mx-3">
-        <label className="font-bold  text-black mb-1">Kişi Sayısı</label>
-        <DropdownMenu
-          options={personCount.map((option) => ({
-            id: option,
-            name: option,
-          }))}
-          currentOption={selectedPersonCount}
-          onSelect={(value) =>
-            handleDropdownSelect(value, setSelectedPersonCount)
-          }
-        />
-      </div>
-      <button
-        className="bg-company-orange text-white font-bold text-lg px-3 py-1 rounded-md ml-2 transition duration-300 hover:bg-red-700"
-        onClick={handleClearFilter}
-      >
-        Filitreleri Temizle
-      </button>
+    <div className="car-filter-container">
+      <Transition duration={0.3}>
+        <div className="car-filter-column">
+          <label className="car-filter-label">Segment</label>
+          <DropdownMenu
+            options={segmentOptions.map((option) => ({
+              id: option,
+              name: option,
+            }))}
+            currentOption={selectedSegment}
+            onSelect={(value) =>
+              handleDropdownSelect(value, setSelectedSegment)
+            }
+          />
+        </div>
+      </Transition>
+      <Transition duration={0.5}>
+        <div className="car-filter-column">
+          <label className="car-filter-label">Yakıt Türü</label>
+          <DropdownMenu
+            options={fuelTypes.map((option) => ({
+              id: option,
+              name: option,
+            }))}
+            currentOption={selectedFuelType}
+            onSelect={(value) =>
+              handleDropdownSelect(value, setSelectedFuelType)
+            }
+          />
+        </div>
+      </Transition>
+      <Transition duration={0.7}>
+        <div className="car-filter-column">
+          <label className="car-filter-label">Vites Türü</label>
+          <DropdownMenu
+            options={gearTypes.map((option) => ({
+              id: option,
+              name: option,
+            }))}
+            currentOption={selectedGearType}
+            onSelect={(value) =>
+              handleDropdownSelect(value, setSelectedGearType)
+            }
+          />
+        </div>
+      </Transition>
+      <Transition duration={0.9}>
+        <div className="car-filter-column">
+          <label className="car-filter-label">Kişi Sayısı</label>
+          <DropdownMenu
+            options={personCount.map((option) => ({
+              id: option,
+              name: option,
+            }))}
+            currentOption={selectedPersonCount}
+            onSelect={(value) =>
+              handleDropdownSelect(value, setSelectedPersonCount)
+            }
+          />
+        </div>
+      </Transition>
+      <Transition duration={1.1}>
+        <button className="clear-filter-button" onClick={handleClearFilter}>
+          Temizle
+        </button>
+      </Transition>
     </div>
   );
 };
