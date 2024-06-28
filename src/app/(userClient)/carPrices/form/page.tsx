@@ -88,7 +88,6 @@ const page = () => {
       }),
     });
     const data = await response.json();
-    console.log(data[0]);
     if (response.ok) {
       if (data[0].success === "False") {
         Notify.failure(data[0].error);
