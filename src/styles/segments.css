@@ -67,7 +67,7 @@
     }
 
     .segment-price {
-        @apply text-3xl;
+        @apply text-xl;
     }
 
     .segment-price-desc {
