@@ -55,7 +55,7 @@
 }
 
 .car-card-price {
-  @apply text-3xl font-bold text-company-orange;
+  @apply absolute bottom-3 right-8 text-3xl font-bold text-company-orange;
 }
 
 .car-card-price-sub {
@@ -81,11 +81,14 @@
   }
 
   .car-card-price {
-    @apply text-xl;
+    @apply text-xl right-4;
   }
 
+  .car-card-rental-conditions {
+    margin-bottom: 12px;
+  }
   .car-card-conditions {
-    @apply mb-1;
+    @apply mb-0;
   }
 
 }

@@ -37,6 +37,7 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
             break;
         }
         totalRentalPrice *= multiplier;
+        totalRentalPrice /= parseInt(searchData?.rentalDuration!);
         const round = await roundToHigherTenth(totalRentalPrice);
         setRentalPrice(round);
       }
@@ -74,28 +75,28 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
           <p className="car-card-features">
             <span>Yakıt: {car.fuel}</span>
             <span>Vites: {car.transmission}</span>
-            <span>Kişi: {car.chairs}</span>
-            <span>Bagaj: {car.small_bags}</span>
+            {/* <span>Kişi: {car.chairs}</span>
+            <span>Bagaj: {car.small_bags}</span> */}
           </p>
         </div>
         <div className="car-card-gradient-right"></div>
         <div className="car-card-details-right">
           <h1 className="car-card-rental-conditions">Koşullar</h1>
           <p className="car-card-conditions">
-            <span>Sürücü Yaşı: {car.driver_age}</span>
-            <span>Tecrübe: {car.driving_license_age}</span>
+            {/* <span>Sürücü Yaşı: {car.driver_age}</span>
+            <span>Tecrübe: {car.driving_license_age}</span> */}
             {path.startsWith("/carPrices") && <span>Km: {searchData?.km}</span>}
             {path.startsWith("/carPrices") && (
               <span>Kira Süresi: {searchData?.rentalDuration} ay</span>
             )}
           </p>
-          {path.startsWith("/carPrices") && (
-            <h1 className="car-card-price">
-              {rentalPrice} {car.currency}{" "}
-              <span className="car-card-price-sub">+ KDV</span>
-            </h1>
-          )}
         </div>
+        {path.startsWith("/carPrices") && (
+          <h1 className="car-card-price">
+            {rentalPrice} {car.currency} / Ay{" "}
+            <span className="car-card-price-sub">+ KDV</span>
+          </h1>
+        )}
       </div>
     </Transition>
   );
