@@ -56,7 +56,7 @@ const Segments = () => {
       });
     });
 
-    const result = lowestRentalPerGroup.filter((car) => car !== null);
+    const result = lowestRentalPerGroup.filter((car): car is CarModel => car !== null);
     setLowestRentalPerGroup(result);
     console.log(result);
     Loading.remove();
