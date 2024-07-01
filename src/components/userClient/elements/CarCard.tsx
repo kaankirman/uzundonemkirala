@@ -78,7 +78,9 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
             {/* <span>Kişi: {car.chairs}</span>
             <span>Bagaj: {car.small_bags}</span> */}
           </p>
-          <h1 className="car-card-rental-conditions">Koşullar</h1>
+          {path.startsWith("/carPrices") && (
+            <h1 className="car-card-rental-conditions">Koşullar</h1>
+          )}
           <p className="car-card-conditions">
             {/* <span>Sürücü Yaşı: {car.driver_age}</span>
             <span>Tecrübe: {car.driving_license_age}</span> */}
@@ -89,7 +91,6 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
           </p>
         </div>
         <div className="car-card-gradient-right"></div>
-        <div className="car-card-details-right"></div>
         {path.startsWith("/carPrices") && (
           <h1 className="car-card-price">
             {rentalPrice} {car.currency} / Ay{" "}
