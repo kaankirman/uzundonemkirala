@@ -27,15 +27,15 @@
 }
 
 .car-card-title {
-  @apply font-bold text-3xl text-company-orange mb-3;
+  @apply font-bold text-3xl text-company-orange mb-2;
 }
 
 .car-card-subtitle {
-  @apply text-xl font-bold mb-3 text-white;
+  @apply text-xl font-bold mb-1 text-white;
 }
 
 .car-card-features {
-  @apply flex flex-col *:font-bold *:text-sm text-neutral-300;
+  @apply flex flex-col mb-1 *:font-bold *:text-sm text-neutral-300;
 }
 
 .car-card-gradient-right {
@@ -47,7 +47,7 @@
 }
 
 .car-card-rental-conditions {
-  @apply text-xl font-bold mb-3 text-white;
+  @apply text-xl font-bold mb-1 text-white;
 }
 
 .car-card-conditions {
@@ -85,7 +85,7 @@
   }
 
   .car-card-rental-conditions {
-    margin-bottom: 12px;
+    @apply mb-1;
   }
   .car-card-conditions {
     @apply mb-0;
