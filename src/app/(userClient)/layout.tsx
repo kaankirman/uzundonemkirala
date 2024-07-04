@@ -4,6 +4,7 @@ import "@styles/layout.css"; // Import the new CSS file
 import Nav from "@components/userClient/Nav";
 import Footer from "@components/userClient/Footer";
 import { Suspense } from "react";
+import logo from "@public/assets/images/logo.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.uzundonemkirala.com/"),
@@ -54,6 +55,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
+      <head>
+        <link rel="icon" href={logo.src} type="image/png" />
+      </head>
       <body>
         <div className="layout-container">
           <Nav />

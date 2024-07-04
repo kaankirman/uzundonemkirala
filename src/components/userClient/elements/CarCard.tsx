@@ -3,7 +3,7 @@ import { CarModel, SearchData } from "@utils/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Transition from "./Transition";
-import "@styles/car-card.css"; // Import the css file
+import "@styles/car-card.css";
 
 type CarCardProps = {
   car: CarModel;
@@ -42,6 +42,7 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
         setRentalPrice(round);
       }
     };
+
     adjustRentalPrice();
   }, [searchData?.km]);
 
@@ -63,7 +64,7 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
         )}
         <div className="car-card-image-container">
           <img
-            src={`https://uzundonemkirala.com/Files/img/Car-Images/${car.image_path}`}
+            src={`https://turev7.turevrac.com/uzundonem7dzn/${car.image_path}`}
             alt={`${car.brand} ${car.type}`}
             className="car-card-image"
           />

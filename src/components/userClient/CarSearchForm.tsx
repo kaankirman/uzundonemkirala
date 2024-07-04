@@ -4,8 +4,9 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import { BsCalendar2Week } from "react-icons/bs";
 import DropdownMenu from "@components/userClient/elements/DropdownMenu";
 import Link from "next/link";
-import Notiflix, { Loading, Notify } from "notiflix";
-import "@styles/car-search-form.css"; // import the css file
+import Notiflix, { Notify } from "notiflix";
+import "@styles/car-search-form.css";
+import "@styles/datepicker.css"
 
 const CarSearchForm = () => {
   const minDate = new DateObject().add(1, "day");
