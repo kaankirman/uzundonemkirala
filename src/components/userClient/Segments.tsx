@@ -16,6 +16,14 @@ const Segments = () => {
   const [lowestRentalPerGroup, setLowestRentalPerGroup] = useState<CarModel[]>(
     []
   );
+  const [ust, setUst] = useState<number | null>(null);
+  const [orta, setOrta] = useState<number | null>(null);
+  const [ekonomik, setEkonomik] = useState<number | null>(null);
+  const [luks, setLuks] = useState<number | null>(null);
+
+  const roundToHigherTenth = async (value: number) => {
+    return Math.round(value / 100) * 100;
+  };
 
   useEffect(() => {
     Loading.standard();
@@ -56,11 +64,40 @@ const Segments = () => {
       });
     });
 
-    const result = lowestRentalPerGroup.filter((car): car is CarModel => car !== null);
+    const result = lowestRentalPerGroup.filter(
+      (car): car is CarModel => car !== null
+    );
     setLowestRentalPerGroup(result);
-    console.log(result);
     Loading.remove();
   }, [carModels]);
+
+  useEffect(() => {
+    const setPrices = async () => {
+      if (lowestRentalPerGroup.length > 3) {
+        setLuks(
+          await roundToHigherTenth(
+            parseInt(lowestRentalPerGroup[0].total_rental!)
+          )
+        );
+        setOrta(
+          await roundToHigherTenth(
+            parseInt(lowestRentalPerGroup[1].total_rental!)
+          )
+        );
+        setEkonomik(
+          await roundToHigherTenth(
+            parseInt(lowestRentalPerGroup[2].total_rental!)
+          )
+        );
+        setUst(
+          await roundToHigherTenth(
+            parseInt(lowestRentalPerGroup[3].total_rental!)
+          )
+        );
+      }
+    };
+    setPrices();
+  }, [lowestRentalPerGroup]);
 
   return (
     <div className="segment-container">
@@ -68,11 +105,7 @@ const Segments = () => {
         <div className="segment-card">
           <img src={luxuryBg.src} className="segment-image" />
           <div className="segment-price-container">
-            {lowestRentalPerGroup[0] ? (
-              <h1 className="segment-price">
-                {lowestRentalPerGroup[0].total_rental} TL + KDV
-              </h1>
-            ) : null}
+            {luks ? <h1 className="segment-price">{luks} TL + KDV</h1> : null}
             <h1 className="segment-price-desc">başlayan fiyatlar</h1>
           </div>
           <div className="segment-gradient-overlay">
@@ -96,9 +129,9 @@ const Segments = () => {
         <div className="segment-card">
           <img src={highBg.src} className="segment-image" />
           <div className="segment-price-container">
-            {lowestRentalPerGroup[3] ? (
+            {ust ? (
               <h1 className="segment-price">
-                {lowestRentalPerGroup[3].total_rental} TL + KDV
+                {ust} TL + KDV
               </h1>
             ) : null}
             <h1 className="segment-price-desc">başlayan fiyatlar</h1>
@@ -128,9 +161,9 @@ const Segments = () => {
         <div className="segment-card">
           <img src={midBg.src} className="segment-image" />
           <div className="segment-price-container">
-            {lowestRentalPerGroup[1] ? (
+            {orta ? (
               <h1 className="segment-price">
-                {lowestRentalPerGroup[1].total_rental} TL + KDV
+                {orta} TL + KDV
               </h1>
             ) : null}
             <h1 className="segment-price-desc">başlayan fiyatlar</h1>
@@ -158,9 +191,9 @@ const Segments = () => {
         <div className="segment-card">
           <img src={ecoBg.src} className="segment-image" />
           <div className="segment-price-container">
-            {lowestRentalPerGroup[2] ? (
+            {ekonomik ? (
               <h1 className="segment-price">
-                {lowestRentalPerGroup[2].total_rental} TL + KDV
+                {ekonomik} TL + KDV
               </h1>
             ) : null}
             <h1 className="segment-price-desc">başlayan fiyatlar</h1>
