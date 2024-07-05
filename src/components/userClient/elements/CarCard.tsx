@@ -94,7 +94,7 @@ const CarCard = ({ car, searchData }: CarCardProps) => {
         <div className="car-card-gradient-right"></div>
         {path.startsWith("/carPrices") && (
           <h1 className="car-card-price">
-            {rentalPrice} {car.currency} / Ay{" "}
+            {rentalPrice !== null ? rentalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '-'} {car.currency} / Ay{" "}
             <span className="car-card-price-sub">+ KDV</span>
           </h1>
         )}
