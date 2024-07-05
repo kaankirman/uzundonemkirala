@@ -26,7 +26,7 @@ export default function NavigationMenu() {
         />
         <div className="navigation-icons-container">
           <Link
-            href="/"
+            href="https://www.instagram.com/uzundonemkirala?igsh=MXRid3BvYzloMndoaw%3D%3D"
             rel="noopener noreferrer"
             target="_blank"
             className="navigation-menu-link"

@@ -8,7 +8,7 @@ interface Option {
 
 interface DropdownProps {
   options: Option[];
-  onSelect: (value: number) => void;
+  onSelect: (value: any) => void; // Changed to any to handle null
   currentOption?: any | null;
 }
 
@@ -29,14 +29,14 @@ const DropdownMenu: React.FC<DropdownProps> = ({
   }));
 
   const handleChange = (selectedOption: any) => {
-    onSelect(selectedOption.value);
+    onSelect(selectedOption ? selectedOption.value : null);
   };
 
   return (
     <Select
       className="input pl-0 border-none accent-white"
       placeholder="Seçiniz"
-      value={selectOptions.find((option) => option.value === currentOption)}
+      value={selectOptions.find((option) => option.value === currentOption) || null}
       options={selectOptions}
       onChange={handleChange}
       menuPortalTarget={menuPortalTarget}

@@ -18,13 +18,10 @@ const CarFilter = ({
   const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
   const [selectedFuelType, setSelectedFuelType] = useState<string | null>(null);
   const [selectedGearType, setSelectedGearType] = useState<string | null>(null);
-  const [selectedPersonCount, setSelectedPersonCount] = useState<string | null>(
-    null
-  );
+
   const [segmentOptions, setSegmentOptions] = useState<string[]>([]);
   const [fuelTypes, setFuelTypes] = useState<string[]>([]);
   const [gearTypes, setGearTypes] = useState<string[]>([]);
-  const [personCount, setPersonCount] = useState<string[]>([]);
 
   useEffect(() => {
     const getUniqueGroupStrValues = (models: CarModel[]): string[] => {
@@ -39,13 +36,8 @@ const CarFilter = ({
       const gearTypeSet = new Set(models.map((model) => model.transmission));
       return Array.from(gearTypeSet);
     };
-    const getUniquePersonCountValues = (models: CarModel[]): string[] => {
-      const personCountSet = new Set(models.map((model) => model.chairs));
-      return Array.from(personCountSet);
-    };
     setFuelTypes(getUniqueFuelTypeValues(carModels));
     setGearTypes(getUniqueGearTypeValues(carModels));
-    setPersonCount(getUniquePersonCountValues(carModels));
     setSegmentOptions(getUniqueGroupStrValues(carModels));
     if (carSegment) {
       setSelectedSegment(carSegment);
@@ -60,9 +52,6 @@ const CarFilter = ({
     if (selectedGearType) {
       data = data.filter((model) => model.transmission === selectedGearType);
     }
-    if (selectedPersonCount) {
-      data = data.filter((model) => model.chairs === selectedPersonCount);
-    }
     if (selectedSegment) {
       data = data.filter((model) => model.group_str === selectedSegment);
       
@@ -73,7 +62,6 @@ const CarFilter = ({
     selectedSegment,
     selectedFuelType,
     selectedGearType,
-    selectedPersonCount,
     carModels,
   ]);
 
@@ -85,10 +73,9 @@ const CarFilter = ({
   };
 
   const handleClearFilter = () => {
-    setSelectedSegment("");
-    setSelectedFuelType("");
-    setSelectedGearType("");
-    setSelectedPersonCount("");
+    setSelectedSegment(null);
+    setSelectedFuelType(null);
+    setSelectedGearType(null);
   };
 
   return (
@@ -134,21 +121,6 @@ const CarFilter = ({
             currentOption={selectedGearType}
             onSelect={(value) =>
               handleDropdownSelect(value, setSelectedGearType)
-            }
-          />
-        </div>
-      </Transition>
-      <Transition duration={0.9}>
-        <div className="car-filter-column">
-          <label className="car-filter-label">Kişi Sayısı</label>
-          <DropdownMenu
-            options={personCount.map((option) => ({
-              id: option,
-              name: option,
-            }))}
-            currentOption={selectedPersonCount}
-            onSelect={(value) =>
-              handleDropdownSelect(value, setSelectedPersonCount)
             }
           />
         </div>
