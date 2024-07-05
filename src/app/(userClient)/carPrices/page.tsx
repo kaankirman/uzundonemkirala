@@ -54,7 +54,7 @@ const page = () => {
       >
         <div className="car-grid">
           {filteredModels.map((car) => (
-            <CarCard searchData={searchData} car={car} />
+            <CarCard key={car.image_path} searchData={searchData} car={car} />
           ))}
         </div>
         {filteredModels.length === 0 ? (
