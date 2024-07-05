@@ -65,7 +65,9 @@ const CarFilter = ({
     }
     if (selectedSegment) {
       data = data.filter((model) => model.group_str === selectedSegment);
+      
     }
+    data.sort((a, b) => parseFloat(a.total_rental!) - parseFloat(b.total_rental!));
     setFilteredModels(data);
   }, [
     selectedSegment,

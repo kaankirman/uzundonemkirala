@@ -5,7 +5,7 @@ import CarCard from "@components/userClient/elements/CarCard";
 import { useSearchParams } from "next/navigation";
 import { CarModel } from "@utils/types";
 import CarFilter from "@components/userClient/elements/CarFilter";
-import Notiflix, { Loading } from "notiflix";
+import { Loading } from "notiflix";
 
 const page = () => {
   const searchParams = useSearchParams();
