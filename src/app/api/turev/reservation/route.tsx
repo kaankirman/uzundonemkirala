@@ -57,6 +57,7 @@ export const POST = async (req: Request) => {
     `Your_Rent_Price=${rentalPrice}&`+
     `Your_Extra_Price=0&`+
     `Your_Drop_Price=0&` +
+    `Flight_Number=${searchData.km}&` +
     `Payment_Type=0`;
 
   try {
