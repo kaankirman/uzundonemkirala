@@ -81,11 +81,11 @@ const page = () => {
         Notify.failure(data[0].error);
         return;
       }
-      Notify.success("Rezervasyon talebiniz başarıyla oluşturuldu.");
+      Notify.success("İletişim talebiniz başarıyla oluşturuldu.");
       Loading.remove();
       router.push("/");
     } else {
-      Notify.failure("Rezervasyon talebi sırasında bir hata oluştu.");
+      Notify.failure("İletişim talebi sırasında bir hata oluştu.");
     }
     Loading.remove();
   };
