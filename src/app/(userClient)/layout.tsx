@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "Festival Car Rental Turkey",
   ],
   title:
-    "Uzun Dönem Kirala - Long Term Car Rental Turkey - Uzun Dönem Araç Kiralama",
+    "Daha uzun, daha ucuz!",
   openGraph: {
     description:
       "Uzun Dönem Kirala offers reliable and affordable long-term car rental services across Turkey. Rent a car in Istanbul, Ankara, Antalya, Izmir, and more. Enjoy our best car rental deals with no hidden fees and 24/7 customer support. Book your car rental in Turkey now!",
