@@ -18,12 +18,12 @@ const page = () => {
         <div className="headline-container">
           <Transition duration={0.2}>
             <h1 className="headline-text headline-text-1">
-              {/* Türkiyenin Dört Bir Yanında */}Daha uzun,
+              {/* Türkiyenin Dört Bir Yanında */}Daha uzun 
             </h1>
           </Transition>
           <Transition duration={0.6}>
             <h1 className="headline-text headline-text-2">
-              {/* Yola Çıkmanın En Kolay Yolu, */} Daha ucuz!
+              {/* Yola Çıkmanın En Kolay Yolu, */}  , Daha ucuz!
             </h1>
           </Transition>
           {/* <Transition duration={1}>

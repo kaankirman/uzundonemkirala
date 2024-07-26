@@ -12,7 +12,7 @@
 }
 
 .headline-container {
-    @apply flex flex-col items-end absolute right-8 text-white font-bold text-5xl justify-between h-44 pointer-events-none;
+    @apply flex flex-row items-end absolute right-8 text-white font-bold text-5xl justify-between h-44 pointer-events-none;
     top: 40%;
 }
 
