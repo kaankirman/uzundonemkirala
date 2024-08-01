@@ -1,4 +1,4 @@
-export default async function sitemap() {
+/* export default async function sitemap() {
   return [
     {
       url: "https://www.uzundonemkirala.com/",
@@ -22,3 +22,4 @@ export default async function sitemap() {
     },
   ];
 }
+ */
